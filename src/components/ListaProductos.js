@@ -6,39 +6,22 @@ class ListaProductos extends Component {
         super(props);
     }
 
-    productosEnStock = () => this.props.productos.filter(fruta => fruta.cantidad > 0).map(fruta => <li>{fruta.nombre}</li>)
-
-    productosSinStock = () => this.props.productos.filter(fruta => fruta.cantidad == 0)
-    
-    productosAReponerStock = () => this.props.productos.filter(fruta => fruta.cantidad == 1)
-
-
     render() {
+
         return (
             <div>
-                <h2>
+
+                <h4>
                     {this.props.titulo}
-                </h2>
-
+                </h4>
                 <ul>
-                    {this.productosEnStock()}
+                     {   
+                        //console.log(this.props.productos)
+                     this.props.productos.map(producto => <li>{producto.nombre}</li>)
+                        
+                    } 
                 </ul>
 
-                <h2>
-                    productos sin stock
-                </h2>
-
-                <ul>
-                    {this.productosSinStock().map(fruta => <li>{fruta.nombre}</li>)}
-                </ul>
-
-                <h2>
-                    productos a reponer
-                </h2>
-
-                <ul>
-                    {this.productosAReponerStock().map(fruta => <li>{fruta.nombre}</li>)}
-                </ul>
             </div>
         )
     }
