@@ -24,7 +24,6 @@ class App extends Component {
       
     }
 
-    // const productosEnStock = () => this.state.filter(producto => producto.cantidad > 0)
     const productosEnStock = () =>  this.state.productos.filter(producto => producto.cantidad > 0)
     const productosSinStock = () => this.state.productos.filter(producto => producto.cantidad == 0)
     const productosAReponerStock = () => this.state.productos.filter(producto => producto.cantidad == 1)
