@@ -6,11 +6,14 @@ class AltaProductos extends React.Component {
     }
         
     handleSubmit = (e) => {
+        event.preventDefault()
         let nombre = e.target.nombre.value 
         let cantidad = e.target.cantidad.value 
+
         this.props.datos(nombre, cantidad)
-        event.preventDefault()
+
     }
+
 
     render(){
         return (
@@ -27,7 +30,7 @@ class AltaProductos extends React.Component {
                         <input type="text" name="cantidad" />
                     </label>
                 </div>
-                <input className="btn btn-primary p-4 m-2" type="submit" value="Agregar Producto" />
+                <input className="btn btn-primary p-4 m-2" type="submit" value="Agregar Producto" onClick={this.limpiaCajas}/>
             </form>
 
         )

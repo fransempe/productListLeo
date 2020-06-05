@@ -15,7 +15,7 @@ class ListaProductos extends Component {
                 </h1>
                 <ul>
                      {   
-                        this.props.productos.map(producto => <li key={producto.id}>Id: {producto.id} - Nombre: {producto.nombre}</li>)
+                        this.props.productos.map(producto => <li key={producto.id}>Id: {producto.id} - Nombre: {producto.nombre} - Cantidad: {producto.cantidad}</li>)
                     } 
                 </ul>
             </div>

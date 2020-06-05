@@ -21,7 +21,6 @@ class App extends Component {
       this.setState({
         productos: [ ...this.state.productos, nuevoProducto],
       });
-      
     }
 
     const productosEnStock = () =>  this.state.productos.filter(producto => producto.cantidad > 0)
