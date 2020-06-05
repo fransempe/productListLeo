@@ -6,37 +6,41 @@ import AltaProductos from './components/AltaProductos';
 
 class App extends Component {
 
-  constructor(props) {
-    super(props)
-      this.state = [
-        { id: 0, nombre: 'Pepsi 1lt', cantidad: 28 },
-        { id: 1, nombre: 'CocaCola 2lts', cantidad: 18 },
-        { id: 2, nombre: 'Manaos 1 1/2lts', cantidad: 38 },
-        { id: 3, nombre: 'Schweppes 1lt', cantidad: 1}
-      ] 
+    state = { 
+          productos: []
+        }
+              
+  render(){
+    const dataReceived = (nombre, cantidad) => {
+
+       const nuevoProducto = {
+         id: this.state.productos.length,
+         nombre: nombre,
+         cantidad: parseInt(cantidad)
+       }
+      this.setState({
+        productos: [ ...this.state.productos, nuevoProducto],
+      });
+      
     }
 
+    // const productosEnStock = () => this.state.filter(producto => producto.cantidad > 0)
+    const productosEnStock = () =>  this.state.productos.filter(producto => producto.cantidad > 0)
+    const productosSinStock = () => this.state.productos.filter(producto => producto.cantidad == 0)
+    const productosAReponerStock = () => this.state.productos.filter(producto => producto.cantidad == 1)
 
-   productosEnStock = () => this.state.filter(producto => producto.cantidad > 0)
-
-   productosSinStock = () => this.state.filter(producto => producto.cantidad == 0)
-    
-   productosAReponerStock = () => this.state.filter(producto => producto.cantidad == 1)
-
-  render(){
     return (
       <div className="App">
         <header className="App-header">
-          {/* <img src={logo} className="App-logo" alt="logo" /> */}
-          <AltaProductos />
-          <ListaProductos titulo="Productos en stock" productos={this.productosEnStock()} />
-          <ListaProductos titulo="Productos sin stock" productos={"asd"} />
-          <ListaProductos titulo="Productos a reponer" productos={"asd"} />
-          {/* <ListaProductos titulo="Productos en oferta" productos={productos} /> */}
+          <AltaProductos datos={dataReceived} />
+          <ListaProductos titulo="Productos en Stock" productos={productosEnStock()} />
+          <ListaProductos titulo="Productos sin Stock" productos={productosSinStock()} />
+          <ListaProductos titulo="Productos a Reponer" productos={productosAReponerStock()} />
         </header>
       </div>
     );
   }
 }
+
 
 export default App;

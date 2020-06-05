@@ -10,18 +10,14 @@ class ListaProductos extends Component {
 
         return (
             <div>
-
-                <h4>
+                <h1>
                     {this.props.titulo}
-                </h4>
+                </h1>
                 <ul>
                      {   
-                        //console.log(this.props.productos)
-                     this.props.productos.map(producto => <li>{producto.nombre}</li>)
-                        
+                        this.props.productos.map(producto => <li key={producto.id}>Id: {producto.id} - Nombre: {producto.nombre}</li>)
                     } 
                 </ul>
-
             </div>
         )
     }
