@@ -11,8 +11,8 @@ class App extends Component {
         }
               
   render(){
-    const dataReceived = (nombre, cantidad) => {
-
+    
+    const alAgregar = (nombre, cantidad) => {
        const nuevoProducto = {
          id: this.state.productos.length,
          nombre: nombre,
@@ -30,7 +30,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-          <AltaProductos datos={dataReceived} />
+          <AltaProductos onSubmit={alAgregar} />
           <ListaProductos titulo="Productos en Stock" productos={productosEnStock()} />
           <ListaProductos titulo="Productos sin Stock" productos={productosSinStock()} />
           <ListaProductos titulo="Productos a Reponer" productos={productosAReponerStock()} />

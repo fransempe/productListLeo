@@ -30,7 +30,7 @@ class AltaProductos extends React.Component {
                         <input type="text" name="cantidad" />
                     </label>
                 </div>
-                <input className="btn btn-primary p-4 m-2" type="submit" value="Agregar Producto" onClick={this.limpiaCajas}/>
+                <input className="btn btn-primary p-4 m-2" type="submit" value="Agregar Producto" />
             </form>
 
         )
