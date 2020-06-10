@@ -6,10 +6,13 @@ import AltaProductos from './components/AltaProductos';
 
 class App extends Component {
 
-    state = { 
-          productos: []
-        }
-              
+  constructor(){
+    super();
+    this.state = { 
+      productos: []
+    }
+  }
+                
   render(){
     const alAgregar = (nombre, cantidad) => {
        const nuevoProducto = {
