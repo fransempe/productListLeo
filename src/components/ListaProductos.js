@@ -15,8 +15,15 @@ class ListaProductos extends Component {
                 </h1>
                 <ul>
                      {   
-                        this.props.productos.map(producto => <li key={producto.id}>Id: {producto.id} - Nombre: {producto.nombre} - Cantidad: {producto.cantidad}</li>)
-                    } 
+                        this.props.productos.map(producto => 
+                        <li 
+                        key={producto.id}>
+                        Id: {producto.id} - 
+                        Nombre: {producto.nombre} - 
+                        Cantidad: {producto.cantidad} 
+                        <button className="btn btn-danger m-4" onClick={this.props.deleteproduct.bind(this, producto.id)}>X</button>
+                        </li> )
+                    }    
                 </ul>
             </div>
         )

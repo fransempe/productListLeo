@@ -11,7 +11,6 @@ class App extends Component {
         }
               
   render(){
-    
     const alAgregar = (nombre, cantidad) => {
        const nuevoProducto = {
          id: this.state.productos.length,
@@ -27,13 +26,18 @@ class App extends Component {
     const productosSinStock = () => this.state.productos.filter(producto => producto.cantidad == 0)
     const productosAReponerStock = () => this.state.productos.filter(producto => producto.cantidad == 1)
 
+    const onDelete = (id) => {
+        const nuevosProductos = this.state.productos.filter(producto => producto.id !== id)
+        this.setState({productos: nuevosProductos})
+      }
+
     return (
       <div className="App">
         <header className="App-header">
-          <AltaProductos onSubmit={alAgregar} />
-          <ListaProductos titulo="Productos en Stock" productos={productosEnStock()} />
-          <ListaProductos titulo="Productos sin Stock" productos={productosSinStock()} />
-          <ListaProductos titulo="Productos a Reponer" productos={productosAReponerStock()} />
+          <AltaProductos datos={alAgregar} />
+          <ListaProductos titulo="Productos en Stock" productos={productosEnStock()} deleteproduct={onDelete}/>
+          <ListaProductos titulo="Productos sin Stock" productos={productosSinStock()} deleteproduct={onDelete}/>
+          <ListaProductos titulo="Productos a Reponer" productos={productosAReponerStock()} deleteproduct={onDelete}/>
         </header>
       </div>
     );
